@@ -15,8 +15,8 @@ public class TransformAndSave extends Load {
 		// Load for the first time
 		load();
 		
-		// Cut first department
-		Cut.cut(sampleCompany.getDepts().iterator().next());
+		// Cut all salaries
+		Cut.cut(sampleCompany);
 		double total1 = Total.total(sampleCompany);
 
 		// Save and reload
