@@ -10,22 +10,19 @@ public class Cut {
 
 	public static void cut(Company company) {
 		// cut all salaries in all top departments
-		for (Department dept : company.getDepts())
-			cut(dept);
+		company.getDepts().forEach(d -> cut(d));;
 	}
 
 	public static void cut(Department dept) {
 		// cut all employees' salaries
-		for (Employee employee : dept.getEmployees())
-			cut(employee);
+		dept.getEmployees().forEach(e -> cut(e));
+		
 		// cut all salaries in all sub departments
-		for (Department subDepartment : dept.getSubdepts())
-			cut(subDepartment);
+		dept.getSubdepts().forEach(sd -> cut (sd));
 	}
 
 	public static void cut(Employee employee) {
 		// cut employee's salary by half
 		employee.setSalary(employee.getSalary() / 2);
 	}
-
 }
