@@ -1,7 +1,7 @@
 package org.softlang.tests;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 import org.softlang.company.Company;
 import org.softlang.features.Persistence;
 

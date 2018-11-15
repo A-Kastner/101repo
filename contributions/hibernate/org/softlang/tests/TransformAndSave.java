@@ -1,7 +1,7 @@
 package org.softlang.tests;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 import org.softlang.features.Cut;
 import org.softlang.features.Total;
 
@@ -25,7 +25,7 @@ public class TransformAndSave extends Load {
 
 		// Check that save succeeded
 		double total2 = Total.total(sampleCompany);
-		assertEquals(total1, total2, 0.0);
+		assertEquals(total1, total2);
 	}
 
 }

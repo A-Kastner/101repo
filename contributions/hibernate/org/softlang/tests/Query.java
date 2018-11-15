@@ -1,7 +1,7 @@
 package org.softlang.tests;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 import org.softlang.features.Total;
 
 // See online documentation for detailed instructions
@@ -12,6 +12,6 @@ public class Query extends Load {
 	public void testTotal() {
 		load();
 		double total = Total.total(sampleCompany);
-		assertEquals(399747, total, 0.0);
+		assertEquals(399747, total);
 	}
 }
