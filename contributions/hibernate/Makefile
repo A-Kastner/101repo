@@ -10,7 +10,7 @@ none:
 # Start HSQL DB server
 
 start-db:
-	cd data; java -cp ../lib/hsqldb.jar org.hsqldb.Server &
+	cd data; java -cp ../lib/hsqldb.jar org.hsqldb.server.Server &
 
 
 ###################################################################
