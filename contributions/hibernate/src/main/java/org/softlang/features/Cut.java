@@ -10,15 +10,15 @@ public class Cut {
 
 	public static void cut(Company company) {
 		// cut all salaries in all top departments
-		company.getDepts().forEach(d -> cut(d));
+		company.getDepts().forEach(Cut::cut);
 	}
 
 	public static void cut(Department dept) {
 		// cut all employees' salaries
-		dept.getEmployees().forEach(e -> cut(e));
+		dept.getEmployees().forEach(Cut::cut);
 
 		// cut all salaries in all sub departments
-		dept.getSubdepts().forEach(sd -> cut (sd));
+		dept.getSubdepts().forEach(Cut::cut);
 	}
 
 	public static void cut(Employee employee) {

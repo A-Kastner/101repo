@@ -8,20 +8,12 @@ import org.softlang.company.*;
 public class Mentoring {
 
 	public static boolean check(Company company) {
-		for (Department dept : company.getDepts())
-			if (!check(dept))
-				return false;
-		return true;
+		return company.getDepts().stream().allMatch(Mentoring::check);
 	}
 
 	public static boolean check(Department dept) {
-		for (Employee employee : dept.getEmployees())
-			if (!check(employee))
-				return false;
-		for (Department subdept : dept.getSubdepts())
-			if (!check(subdept))
-				return false;
-		return true;
+		return dept.getEmployees().stream().allMatch(Mentoring::check)
+		& dept.getSubdepts().stream().allMatch(Mentoring::check);
 	}
 
 	public static boolean check(Employee employee) {

@@ -12,21 +12,22 @@ public class Total {
 		// total all salaries in all top departments
 		return company.getDepts()
 				.stream()
-				.map(dept -> total(dept))
-				.reduce(0.0, (t1,t2) -> t1+t2);
+				.mapToDouble(Total::total)
+				.sum();
 	}
 
 	public static double total(Department dept) {
 		// total all department's employees' salaries
 		return dept.getEmployees()
 				.stream()
-				.map(employee -> total(employee))
-				.reduce(0.0, (t1,t2) -> t1+t2)
+				.mapToDouble(Total::total)
+				.sum()
+
 				// total all salaries in all sub departments
 				+ dept.getSubdepts()
 				.stream()
-				.map(subDept -> total(subDept))
-				.reduce(0.0, (t1,t2) -> t1+t2);
+				.mapToDouble(Total::total)
+				.sum();
 	}
 
 	public static double total(Employee employee) {
