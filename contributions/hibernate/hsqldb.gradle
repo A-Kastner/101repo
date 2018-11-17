@@ -19,11 +19,9 @@ task startDatabase() {
 }
 
 def buildProcess(className, filePath) {
-    def javaHome = System.getProperty("java.home")
-    def javaBin = javaHome + File.separator + "bin" + File.separator + "java"
     def classpath = project.buildscript.configurations.classpath.asPath
 
-    def builder = new ProcessBuilder(javaBin, "-cp", classpath, className, "-database.0", filePath)
+    def builder = new ProcessBuilder(javaBin(), "-cp", classpath, className, "-database.0", filePath)
     builder.redirectErrorStream(true)
     builder.directory(projectDir)
     def process = builder.start()
@@ -42,7 +40,6 @@ def wait(Process process) {
         }
     }
 }
-
 
 import groovy.sql.Sql
 
@@ -84,6 +81,16 @@ task fillDatabase() {
     }
 }
 
+task openDatabaseManager() {
+    group = 'database'
+    doLast {
+        logger.quiet("\nSelect HSQL Database Engine Server!")
+        def classpath = project.buildscript.configurations.classpath.asPath
+        def builder = new ProcessBuilder(javaBin(), "-cp", classpath, "org.hsqldb.util.DatabaseManagerSwing")
+        builder.start()
+    }
+}
+
 Sql getSqlInstance(){
     def dbUser = project.properties['dbUser'] ?: gradle.dbUser
     def dbPassword = project.properties['dbPassword'] ?: gradle.dbPassword
@@ -96,6 +103,12 @@ Sql getSqlInstance(){
     }
 
     return Sql.newInstance(dbUrl, dbUser, dbPassword, dbDrive) as Sql
+}
+
+def static javaBin(){
+    def javaHome = System.getProperty("java.home")
+    def javaBin =  javaHome + File.separator + "bin" + File.separator + "java"
+    javaBin
 }
 
 boolean available() {
