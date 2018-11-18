@@ -17,14 +17,15 @@ Please follow these steps carefully.
 ## Start from a clean setup
 Upon checking out the implementation, you are clean.
 
-It is recommended to execute *clean* and *populate* to reset the database state.
+For further testing,
+it is recommended to execute *clean* and *populate* to reset the database state.
 
 ## Build the project
 This is a Gradle Project.
 Everything is included.
 
 The project should built fine in any IDE that supports Gradle.
-Eclipse and IntelliJ support Gradle natively in the latest versions.
+Eclipse and IntelliJ support Gradle natively in their latest versions.
 
 We have 4 different Gradle tasks for you to easily run the tests and you therefore don't need to care about the database server as much.
 
@@ -32,21 +33,20 @@ We have 4 different Gradle tasks for you to easily run the tests and you therefo
 
 You can find the Gradle tasks in the group 'database'.
 
-### *start*
+* ### *start*
 This task starts the database in the background.
 
-### *stop*
+* ### *stop*
 As the name says, this task will stop the database server.
 
-### *clear*
+* ### *clear*
 This command clears the database completely.
 
-### *populate*
+* ### *populate*
 This will fill the database with all the sample data provided and is required for the tests.
-
 To reset the data it is recommended to execute *clear* and then *populate* to start fresh.
 
-### *openDbManager*
+* ### *openDbManager*
 This will open the Database Manager so you can verify or debug various things.
 
 ### Proper testing
@@ -59,4 +59,3 @@ Several test cases are collected in package org.softlang.tests:
 
 ## Finish off
 Just execute *stop* and quit the database monitor.
-
