@@ -24,7 +24,7 @@ it is recommended to execute *clean* and *populate* to reset the database state.
 This is a Gradle Project.
 Everything is included.
 
-The project should built fine in any IDE that supports Gradle.
+The project should build fine in any IDE that supports Gradle.
 Eclipse and IntelliJ support Gradle natively in their latest versions.
 
 We have 4 different Gradle tasks for you to easily run the tests and you therefore don't need to care about the database server as much.
