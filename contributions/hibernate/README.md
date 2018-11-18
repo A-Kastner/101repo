@@ -33,20 +33,20 @@ We have 4 different Gradle tasks for you to easily run the tests and you therefo
 
 You can find the Gradle tasks in the group 'database'.
 
-* ### *start*
+### *start*
 This task starts the database in the background.
 
-* ### *stop*
+### *stop*
 As the name says, this task will stop the database server.
 
-* ### *clear*
+### *clear*
 This command clears the database completely.
 
-* ### *populate*
+### *populate*
 This will fill the database with all the sample data provided and is required for the tests.
 To reset the data it is recommended to execute *clear* and then *populate* to start fresh.
 
-* ### *openDbManager*
+### *openDbManager*
 This will open the Database Manager so you can verify or debug various things.
 
 ### Proper testing
