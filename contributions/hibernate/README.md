@@ -6,7 +6,7 @@ Documentation: http://101companies.org/wiki/Contribution:hibernate
 
 In addition to the wiki-listed developers and reviewers, these sources are acknowledged: 
 
-* The Hibernate Tutorial by Red Hat Middleware LLC: http://www.hibernate.org/hib docs/v3/reference/en/html/tutorial.html
+* The Hibernate Tutorial by Red Hat Middleware LLC
 * Christian Bauer, Gavin King: Java Persistence with Hibernate. Manning Publications, 2006
 
 ### Changes for the contribution's documentation:
@@ -49,7 +49,7 @@ To reset the data it is recommended to execute *clear* and then *populate* to st
 ### *openDbManager*
 This will open the Database Manager so you can verify or debug various things.
 
-### Proper testing
+## Proper testing
 Several test cases are collected in package org.softlang.tests:
 
 * Run the JUnit test *Check* for checking for the ranking constraint. This test does not modify the state of the database. This test succeeds repeatedly (since even the cut transformation does not end up violating the constraint).
