@@ -1,6 +1,8 @@
 apply plugin: 'java'
 
-task startDatabase() {
+import groovy.sql.Sql
+
+task start() {
     group = 'database'
     outputs.upToDateWhen {
         return !available()
@@ -41,9 +43,7 @@ def wait(Process process) {
     }
 }
 
-import groovy.sql.Sql
-
-task stopDatabase() {
+task stop() {
     group = 'database'
     outputs.upToDateWhen {
         return available()
@@ -55,7 +55,7 @@ task stopDatabase() {
     }
 }
 
-task clearDatabase() {
+task clear() {
     group = 'database'
     outputs.upToDateWhen {
         return available()
@@ -67,7 +67,7 @@ task clearDatabase() {
     }
 }
 
-task fillDatabase() {
+task populate() {
     group = 'database'
     outputs.upToDateWhen {
         return available()
@@ -81,7 +81,7 @@ task fillDatabase() {
     }
 }
 
-task openDatabaseManager() {
+task openDbManager() {
     group = 'database'
     doLast {
         logger.quiet("\nSelect HSQL Database Engine Server!")
@@ -107,8 +107,7 @@ Sql getSqlInstance(){
 
 def static javaBin(){
     def javaHome = System.getProperty("java.home")
-    def javaBin =  javaHome + File.separator + "bin" + File.separator + "java"
-    javaBin
+    javaHome + File.separator + "bin" + File.separator + "java"
 }
 
 boolean available() {
