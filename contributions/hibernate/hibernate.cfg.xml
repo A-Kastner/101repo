@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE hibernate-configuration PUBLIC
         "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
-        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+        "http://www.hibernate.org/dtd/hibernate-configuration">
 
 	<!--
 		This file contains project-wide settings for Hibernate. All these
@@ -35,12 +35,12 @@
 		<property name="show_sql">true</property>
 
 		<!-- Create the database schema, if needed; update otherwise -->
-		<property name="hbm2ddl.auto">update</property>			  			  
-
-	    <!-- Mapping files in the project -->
-		<mapping resource="org/softlang/company/Company.hbm.xml" />
-		<mapping resource="org/softlang/company/Department.hbm.xml" />
-		<mapping resource="org/softlang/company/Employee.hbm.xml" />
+		<property name="hbm2ddl.auto">update</property>			
+		
+		<!-- mappings for annotated classes -->
+        <mapping class="org.softlang.company.Employee"/>  	
+        <mapping class="org.softlang.company.Department"/>  
+        <mapping class="org.softlang.company.Company"/>  		  
 
 	</session-factory>
 

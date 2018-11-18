@@ -2,15 +2,38 @@ package org.softlang.company;
 
 import java.util.*;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 /**
  * A department has a name, a manager, employees, and subdepartments.
  * 
  */
+@Entity
+@Table(name="department")
 public class Department {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id")
 	private Long id;
+	
+	@Column(name="name")
 	private String name;
+	
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name="dept_id")
 	private Set<Employee> employees;
+	
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name="dept_id")
 	private Set<Department> subdepts;
 
 	public Long getId() {
