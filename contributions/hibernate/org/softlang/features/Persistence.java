@@ -3,6 +3,7 @@ package org.softlang.features;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.Configuration;
 import org.softlang.company.*;
 
@@ -14,9 +15,9 @@ public class Persistence {
         try {
             // Create the SessionFactory from hibernate.cfg.xml
             sessionFactory = 
-            	new Configuration().
-            	configure().
-            	buildSessionFactory();
+                	new AnnotationConfiguration()
+                	.configure()
+                	.buildSessionFactory();
         } catch (Throwable ex) {
             // Make sure you log the exception, as it might be swallowed
             System.err.println("Initial SessionFactory creation failed." + ex);

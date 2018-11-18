@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
 /**
  * A department has a name, a manager, employees, and subdepartments.
  * 
@@ -35,6 +36,7 @@ public class Department {
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="dept_id")
 	private Set<Department> subdepts;
+
 
 	public Long getId() {
 		return id;

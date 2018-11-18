@@ -37,7 +37,7 @@ public class Employee {
     @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="mentor")
 	private Employee mentor;
-
+	
 	public long getId() {
 		return id;
 	}
@@ -85,5 +85,5 @@ public class Employee {
 	
 	public void setMentor(Employee mentor) {
 		this.mentor = mentor;
-	}
+}
 }
