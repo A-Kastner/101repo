@@ -1,34 +1,14 @@
-This is an implementation of the 101companies System.
-
-Headline: Object/Relational mapping for Java with Hibernate
-
-Documentation: http://101companies.org/wiki/Contribution:hibernate
-
-In addition to the wiki-listed developers and reviewers, these sources are acknowledged: 
-
-* The Hibernate Tutorial by Red Hat Middleware LLC
-* Christian Bauer, Gavin King: Java Persistence with Hibernate. Manning Publications, 2006
-
-### Changes for the contribution's documentation:
-
 == Headline == 
 
-[[Object-Relational mapping]] for [[Language:Java|Java]] with [[Technology:Hibernate|Hibernate]]
+[[Object-Relational mapping]] for [[Language:Java|Java]] with [[Technology:Hibernate|Hibernate]] and [[Technology:JPA]].
 
-== Motivation ==
+== Characteristics == 
 
-[[Object-Relational mapping]] or [[persistence]] on the Java platform is exercised using 
-[[Technology:Hibernate]]. The primary data model for companies is a straightforward
-object model for [[POJO]]s. A mapping is defined to associate a relational schema
-with the classes. The mapping is specified by [[Technology:JPA]] annotations and organized
-in a per-class manner. For each class, properties and [[relationship]]s are specified by
-the mapping. It is insightful to compare the object model and the mapping-implied relational
-schema. It is also insightful to compare the latter schema with one that was ''natively'' 
-designed from a relational database point of view; see [[Contribution:mySqlMany]]. In 
-particular, the object model and the implied relational schema are essentially "optimized" 
-for downwards traversal of the company structure whereas a native relational schema would
-rather provide foreign keys for upwards navigation (such as navigating from an employee to
-its department or company).
+The contribution demonstrates [[Object-Relational mapping]] or [[persistence]] on the Java platform. A mapping is definied in the object models as Java-Annotations.
+
+== Relationships ==
+
+[[Contribution:NAME|Contribution:NAME]] is a variation of [[Contribution:hibernate|hibernate]]. The variation is concerned with the realization of [[O/R mapping]]. That is, this project's object model is mapped by use of [[Technology:JPA]] annotations and used by the [[Technology:Hibernate|Hibernate framework]] instead of legacy [[Language:XML]]-mapping files for all [[Persistence|persistent]] classes.
 
 == Illustration ==
 
@@ -85,8 +65,7 @@ That is, the ''id'' property is directly mapped to a primary key column
 by use of @Id. @GeneratedValue allows the application to set
 the property itself, i.e. generate some identifier for your entity.
 
-Also, the ''name'' property is mapped to a column of just that name---applying
-default mapping rules between SQL types and Java types. Further, the ''employees''
+Further, the ''employees''
 property is non-trivially associated with a foreign key ''DEPT_ID'' of the 
 ''EMPLOYEE'' table by use of the @OneToMany annotation. This is only
 indirectly identified through the mentioning of the ''Employee'' class; likewise for sub-departments.
@@ -138,25 +117,17 @@ Hibernate is informed here that the database catalog is to be updated automatica
 if the mapping-implied tables are not yet declared in the database, then they will
 be created automatically.
 
-== Architecture ==
+== Usage ==
 
-Package ''org.softlang.company'' hosts the java object model for [[Feature:Hierarchical company]].
-Package ''org.softlang.features'' provides functionality for [[Feature:Total]] and [[Feature:Cut]]
-as well as boilerplate code for [[Feature:Persistence]]. The folder ''scripts'' contains SQL-scripts
-to create and populate the tables (there is no need to execute these statements, see workflow described below).
-The Hibernate configuration file is located in src/main/resources dir. The HSQLDB database files are located in the data dir.
-
-
-# Usage
 Please follow these steps carefully.
 
-## Start from a clean setup
+'''Start from a clean setup'''
 Upon checking out the implementation, you are clean.
 
 For further testing,
 it is recommended to execute *clean* and *populate* to reset the database state.
 
-## Build the project
+'''Build the project'''
 This is a Gradle Project.
 Everything is included.
 
@@ -165,27 +136,27 @@ Eclipse and IntelliJ support Gradle natively in their latest versions.
 
 We have 4 different Gradle tasks for you to easily run the tests and you therefore don't need to care about the database server as much.
 
-### Gradle tasks
+'''Gradle tasks'''
 
 You can find the Gradle tasks in the group 'database'.
 
-### *start*
+'''*start*'''
 This task starts the database in the background.
 
-### *stop*
+'''*stop*'''
 As the name says, this task will stop the database server.
 
-### *clear*
+'''*clear*'''
 This command clears the database completely.
 
-### *populate*
+'''*populate*'''
 This will fill the database with all the sample data provided and is required for the tests.
 To reset the data it is recommended to execute *clear* and then *populate* to start fresh.
 
-### *openDbManager*
+'''*openDbManager*'''
 This will open the Database Manager so you can verify or debug various things.
 
-## Proper testing
+'''Proper testing'''
 Several test cases are collected in package org.softlang.tests:
 
 * Run the JUnit test *Check* for checking for the ranking constraint. This test does not modify the state of the database. This test succeeds repeatedly (since even the cut transformation does not end up violating the constraint).
@@ -193,7 +164,7 @@ Several test cases are collected in package org.softlang.tests:
 * Run the JUnit test *TransformNoSave* for cutting all salaries. This test does not modify the state of the database. This test succeeds repeatedly (since the totals before and after cut are compared without using any hard-coded baseline for total).
 * Run the JUnit test *TransformAndSave* for cutting all salaries. This test modifies the state of the database and thus makes fail test *Query*. This test succeeds repeatedly (since the totals before and after cut are compared without using any hard-coded baseline for total).
 
-## Finish off
+'''Finish off'''
 Just execute *stop* and quit the database monitor.
 
 == Metadata == 
@@ -206,23 +177,11 @@ Just execute *stop* and quit the database monitor.
 * [[uses::Language:XML]]
 * [[uses::Technology:Hibernate]]
 * [[uses::Technology:HSQLDB]]
-* [[uses::Technology:JUnit]]
-* [[uses::Technology:Gradle]]
+* [[uses::Technology:jpa]]
+* [[uses:Technology]:Gradle]
 * [[implements::Feature:Hierarchical company]]
 * [[implements::Feature:Total]]
 * [[implements::Feature:Cut]]
 * [[implements::Feature:Mentoring]]
 * [[implements::Feature:Persistence]]
 * [[implements::Feature:Mapping]]
-
-// ----------- ?
-* [[uses::Technology:JPA]]
-* [[uses::Language:javax.Persistence.Annotations]]
-// ----------- ?
-
-* [[developedBy::Contributor:Jürgen Starek]]
-* [[developedBy::Contributor:tschmorleiz]]
-* [[developedBy::Contributor:rlaemmel]]
-* [[reviewedBy::Contributor:avaranovich]]
-
-
